@@ -1,6 +1,6 @@
 # Comparación de herramientras de Construcción
 
-Anteriormente, era suficiente concatenar los scripts juntos. Sin embargo, los tiempos han cambiado, y ahora distribuir el código JavaScript puede ser un esfuerzo complicado. Este problema se ha intensificado con el aumento de las aplicaciones de página única (AsPU). Ellas suelen confiar en muchas librerias más robustas. 
+Anteriormente, era suficiente concatenar los scripts. Sin embargo, los tiempos han cambiado, y ahora distribuir el código JavaScript puede ser un esfuerzo complicado. Este problema se ha intensificado con el aumento de las aplicaciones de página única (AsPU). Ellas suelen confiar en muchas librerias más robustas. 
 
 Por esta razón, existen múltiples estrategias sobre cómo cargarlas. Se podrían cargar todas a la vez o considerar cargarlas a medida que vayan siendo necesarias. El paquete web apoya muchos de estos tipos de estrategias.  
 
@@ -153,9 +153,9 @@ T> complemento [grunt-webpack](https://www.npmjs.com/package/grunt-webpack) te p
 
 ![Gulp](images/gulp.png)
 
-[Gulp](http://gulpjs.com/) takes a different approach. Instead of relying on configuration per plugin, you deal with actual code. If you are familiar with Unix and piping, you'll like Gulp. You have *sources* to match files, *filters* to operate on these sources, and *sinks* to pipe the build results.
+[Gulp](http://gulpjs.com/) toma un enfoque diferente. En lugar de confiar en la configuración por complemento, se lidia con código de verdad. Si se encuentra familiarizado con Unix y tuberías, Gulp será de su agrado. Se tiene *fuentes* para emparejar los archivos, *filtros* para operar en estas fuentes, y *sumideros* para canalizar el resultado de la construcción.
 
-Here's an abbreviated sample *Gulpfile* adapted from the project's README to give you a better idea of the approach:
+Aquí una muestra corta del *Archivo Gulp* adaptado desde el proyecto LEEME para dar una mejor idea del enfoque:
 
 **Gulpfile.js**
 
@@ -194,11 +194,11 @@ gulp.task("watch", () => gulp.watch(paths.scripts, ["scripts"]));
 gulp.task("default", ["watch", "scripts"]);
 ```
 
-Given the configuration is code, you can always hack it if you run into troubles. You can wrap existing Node packages as Gulp plugins, and so on. Compared to Grunt, you have a clearer idea of what's going on. You still end up writing a lot of boilerplate for casual tasks, though. That is where newer approaches come in.
+Dado que la configuración es un código, siempre se puede piratear si te topas con problemas. Se pueden envolver los paquetes del Nodo existente como complementos de Gulp, y así sucesivamente. Comparado con Grunt, se tiene una idea más clara de lo que sucede. Aunque se mantiene escribiendo repetitivamente para tareas casuales. Ahí es donde nuevos enfoques aparecen.
 
-T> [webpack-stream](https://www.npmjs.com/package/webpack-stream) allows you to use webpack in a Gulp environment.
+T> [webpack-stream](https://www.npmjs.com/package/webpack-stream) permite usar el paquete web en un ambiente Gulp.
 
-{pagebreak}
+{salto de página}
 
 ## Browserify
 
