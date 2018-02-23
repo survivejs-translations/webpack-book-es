@@ -1,14 +1,14 @@
-# Comparación de herramientras de Construcción
+# Comparación de Herramientras de Construcción
 
 Anteriormente, era suficiente concatenar los scripts. Sin embargo, los tiempos han cambiado, y ahora distribuir el código JavaScript puede ser un esfuerzo complicado. Este problema se ha intensificado con el aumento de las aplicaciones de página única (AsPU). Ellas suelen confiar en muchas librerias más robustas. 
 
 Por esta razón, existen múltiples estrategias sobre cómo cargarlas. Se podrían cargar todas a la vez o considerar cargarlas a medida que vayan siendo necesarias. El paquete web apoya muchos de estos tipos de estrategias.  
 
-La popularidad de Node y [npm](https://www.npmjs.com/), es el administrador de paquete, que provee más contexto. Antes de que npm se hiciera más popular, era difícil consumir dependencias. Hubo un periodo donde las personas desarrollaron administradores de paquetes de específicos, pero al final npm ganó. Ahora el manejo de dependencias es mucho más fácil que antes, aunque aún hay desafíos por superar.
+La popularidad de Node y [npm](https://www.npmjs.com/), es el administrador de paquete, que provee más contexto. Antes de que npm se hiciera más popular, era difícil consumir dependencias. Hubo un periodo donde las personas desarrollaron administradores de paquetes  específicos, pero al final npm ganó. Ahora el manejo de dependencias es mucho más fácil que antes, aunque aún hay desafíos por superar.
 
-## Corredores de Tareas y Conjuntos de Paquetes
+## Corredores de Tareas y Empaquetadores
 
-Historicamente hablando, han existido muchas herramientas. El más conocido es tal vez *Make*, y es todavía una opción viable. *Corredores de Tareas* especializados, tales como Grunt y Gunt fueron creados particurlarmente con desarrolladores JavaScript en mente. Los complementos disponibles a través de npm hace que ambos corredores de tareas sean poderosos y extensibles. Es incluso posible usar npm `scripts` como un corredor de tareas. Eso es común, particularmente con paquete web.
+Historicamente hablando, han existido muchas herramientas. El más conocido es tal vez *Make*, y es todavía una opción viable. *Corredores de Tareas* especializados, tales como Grunt y Gunt fueron creados particurlarmente con desarrolladores JavaScript en mente. Los complementos disponibles a través de npm hace que ambos corredores de tareas sean poderosos y extensibles. Es incluso posible usar npm `scripts` como un corredor de tareas. Eso es común, particularmente con el Webpack (paquete web).
 
 Los corredores de tareas son grandes herramientas en un alto nivel. Te permiten realizar operaciones en una plataforma cruzada. El problema inicia cuando se necesita unir varios puntos fuertes y producir conjuntos de paquetes. *Empaquetadores*, como Browserify, Brunch o paquete web, existen por esta razón.
 
@@ -20,7 +20,7 @@ Por un tiempo, [RequireJS](http://requirejs.org/) fue popular. La idea era prove
 
 [Make](https://en.wikipedia.org/wiki/Make_%28software%29)  va mucho más atrás, dado que fue lanzado en 1977. Aunque es una herramienta vieja, se ha mantenido relevante. Make permite escribir tareas separadas para diferentes propósitos. Por ejemplo, se puede tener diferentes tareas para la creación de una producción de construcción, minificando el JavaScript o proceso de pruebas. Se puede encontrar la misma idea en muchas otras herramientas.
 
-Aún cuando Makees mayormente usado con proyectos en C, no se encuentra atado a C de ninguna forma. James Coglan discute en detalle [how to use Make with JavaScript](https://blog.jcoglan.com/2014/02/05/building-javascript-projects-with-make/). Considera el código abreviado basado en la publicación de James de abajo:
+Aún cuando Make es mayormente usado con proyectos en C, no se encuentra atado a C de ninguna forma. James Coglan discute en detalle [how to use Make with JavaScript](https://blog.jcoglan.com/2014/02/05/building-javascript-projects-with-make/). Considera el código abreviado basado en la publicación de James debajo:
 
 **Archivo Make**
 
@@ -143,7 +143,7 @@ module.exports = grunt => {
 };
 ```
 
-En práctica, se tendrán varias pequeñas tareas para propósitos específicos, tales como la construcción de el proyecto. Una parte importante del poder de Grunt es que esconde mucho del cableado.
+En práctica, se tendrán varias pequeñas tareas para propósitos específicos, tales como la construcción del proyecto. Una parte importante del poder de Grunt es que esconde mucho del cableado.
 
 LLevado demasiado lejos, esto puede resultar problemático, puede resultar difícil de comprender lo que está sucediendo bajo el capót. Esa es la lección arquitectónica que se debe tomar de Grunt.
 
@@ -204,9 +204,9 @@ T> [webpack-stream](https://www.npmjs.com/package/webpack-stream) permite usar e
 
 ![Browserify](images/browserify.png)
 
-Lidiando con los modulos de JavaScript siempre ha sido un poco problemático. El lenguaje mismo no poseía el concepto de módulos hasta ES2015. Por lo tanto, el lenguaje estaba atascado en los '90 en lo que se refiere a ambientes de navegación. Diversas soluciones, incluyendo [AMD](http://requirejs.org/docs/whyamd.html), han sido propuestas. 
+Lidiar con los módulos de JavaScript siempre ha sido un poco problemático. El lenguaje mismo no poseía el concepto de módulos hasta ES2015. Por lo tanto, el lenguaje estaba atascado en los '90 en lo que se refiere a ambientes de navegación. Diversas soluciones, incluyendo [AMD](http://requirejs.org/docs/whyamd.html), han sido propuestas. 
 
-[Browserify](http://browserify.org/) es una solución el problema de módulos. Le permite a los módulos CommonJS ser empaquetados juntos. Se pueden conectar con Gulp, y se pueden encontrar herramientas de transformación más pequeñas que permitan ir más allá del uso básico. Por ejemplo, [watchify](https://www.npmjs.com/package/watchify) provee un archivo observador que crea conjuntos de paquetes para su desarrollo durante el esfuerzo de guardado.
+[Browserify](http://browserify.org/) es una solución al problema de módulos. Le permite a los módulos CommonJS ser empaquetados juntos. Se pueden conectar con Gulp, y se pueden encontrar herramientas de transformación más pequeñas que permitan ir más allá del uso básico. Por ejemplo, [watchify](https://www.npmjs.com/package/watchify) provee un archivo observador que crea conjuntos de paquetes para su desarrollo durante el esfuerzo de guardado.
 
 El ecosistema de Browserify se encuentra compuesto por muchos módulos pequeños. De esta forma, Browserify se adhiere a la filosofía de Unix. Browserify es más fácil de adoptar que el paquete web, y es, de hecho, una buena alternativa para ello. 
 
@@ -260,7 +260,7 @@ T> Hay un experimento [Hot Module Reloading runtime](https://www.npmjs.com/packa
 
 Se podría decir que [webpack](https://webpack.js.org/) toma un enfoque más monolítico que el de Browserify. Mientras que Browserify consiste en múltiples herramientas pequeñas, el paquete web viene con núcleo que le provee de bastante funcionalidad fuera de lo establecido.
 
-El núcleo de paquete Web puede ser extendido usando unas específicas *escaleras* y *complementos*. Le da el control sobre cómo *resuelve* los módulos, haciendo posible adaptar tu construcción para igualar situaciones especificas y soluciones alternativas que no funcionan correctamente fuera de lo establecido.
+El núcleo de paquete Web puede ser extendido usando unas específicas *escaleras* y *complementos*. Le da el control sobre cómo *resuelve* los módulos, haciendo posible adaptar la construcción para igualar situaciones especificas y soluciones alternativas que no funcionan correctamente fuera de lo establecido.
 
 Comparado con las otras herramientas, el paquete web viene con una complejidad inicial, sin embargo lo enmenda a través de su amplio conjunto de características. Es una herramienta avanzada que requiere paciencia. Sin embargo, una vez que entiendes las ideas básicas detrás de ello, el paquete web se vuelve poderoso.
 
@@ -268,21 +268,21 @@ Comparado con las otras herramientas, el paquete web viene con una complejidad i
 
 Puedes encontrar más alternativas enlistadas abajo:
 
-* [pundle](https://www.npmjs.com/package/pundle) se anuncia a si mismo como la próxima generación de empaquetamiento y denota particularmente su rendimiento.
+* [pundle](https://www.npmjs.com/package/pundle) se anuncia a sí mismo como la próxima generación de empaquetamiento y denota particularmente su rendimiento.
 * [Rollup](https://www.npmjs.com/package/rollup) se concentra en empaquetar el código ES2015. *hacer vibrar* es uno de sus puntos de venta. Puede usar Rollup con paquete web a través de [rollup-loader](https://www.npmjs.com/package/rollup-loader).
-* [AssetGraph](https://www.npmjs.com/package/assetgraph) toma un enfoque totalmente diferente y construye sobre la semántica de HTML haciéndola ideal para [hyperlink analysis](https://www.npmjs.com/package/hyperlink) o [structural analysis](https://www.npmjs.com/package/assetviz). [webpack-assetgraph-plugin](https://www.npmjs.com/package/webpack-assetgraph-plugin) puntes de paquete web y AssetGraph juntos.
-* [FuseBox](https://www.npmjs.com/package/fuse-box) ees un empaquetamiento que se concentra en la velocidad. Usa un enfoque de configuración cero y apunta a ser utilizable fuera de la establecido.
+* [AssetGraph](https://www.npmjs.com/package/assetgraph) toma un enfoque totalmente diferente y construye sobre la semántica de HTML haciéndola ideal para [hyperlink analysis](https://www.npmjs.com/package/hyperlink) o [structural analysis](https://www.npmjs.com/package/assetviz). [webpack-assetgraph-plugin](https://www.npmjs.com/package/webpack-assetgraph-plugin) puentes de paquete web y AssetGraph juntos.
+* [FuseBox](https://www.npmjs.com/package/fuse-box) es un empaquetamiento que se concentra en la velocidad. Usa un enfoque de configuración cero y apunta a ser utilizable fuera de la establecido.
 * [StealJS](https://stealjs.com/) es un cargador de dependencias y una herramienta de construcción que se ha concentrado en el rendimiento y en un fácil uso.
 * [Flipbox](https://www.npmjs.com/package/flipbox) envuelve múltiples empaquetamientos destrás de una interfaz uniforme.
 * [Blendid](https://www.npmjs.com/package/blendid)  es una mezcla de Gulp y empaquetamientos para formar unas tuberías de puntos fuertes.
 
 ## Conclusión
 
-Historicamente ha habido muchas herramientas de construcción para JavaScript. Cada una ha intentado solucionar un problema en específico a su modo. Los estandares han comenzado a alcanzarse y menor es el esfuerzo requerido alrededor de la semántica básica. En su lugar, las herramientas pueden competir en un nivel mayor y presionar hacia una mejor experiencia para el usuario. Usualmente se puede usar un par de soluciones separadas de forma conjunta. 
+Historicamente ha habido muchas herramientas de construcción para JavaScript. Cada una ha intentado solucionar un problema en específico a su modo. Los estándares han comenzado a alcanzarse y menor es el esfuerzo requerido alrededor de la semántica básica. En su lugar, las herramientas pueden competir en un nivel mayor y presionar hacia una mejor experiencia para el usuario. Usualmente se puede usar un par de soluciones separadas de forma conjunta. 
 
 Para recapitular:
 
 * **Corredores de Tareas* y **empaquetadores**  resuelven diferentes problemas. Puede aspirar a resultados similares con ambos, pero usualmente es mejor usarlos juntos para complementarlos.
 * Herramientas más viejas, tales como Make o RequireJS, aún tienen influcencia, inlcuso si no son tan populares en desarrollo web como lo fueron en el pasado. 
-* Empaquetadores como Browserify o paquete web solucionan un importamte problema y a manejar aplicaciones web complejas.
-* Un número de emergentes tecnología  se enfocan en el problema desde diferentes ángulos. Algunas veces se contruyen sobre otras herramientas y a veces pueden ser usadas juntas.
+* Empaquetadores como Browserify o paquete web ayudan a solucionar un importante problema y a manejar aplicaciones web complejas.
+* Un número de emergentes tecnologías  se enfocan en el problema desde diferentes ángulos. Algunas veces se contruyen sobre otras herramientas y a veces pueden ser usadas juntas.
