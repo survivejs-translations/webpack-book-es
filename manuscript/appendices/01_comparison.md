@@ -4,7 +4,7 @@ Anteriormente, era suficiente concatenar los scripts juntos. Sin embargo, los ti
 
 Por esta razón, existen múltiples estrategias sobre cómo cargarlas. Se podrían cargar todas a la vez o considerar cargarlas a medida que vayan siendo necesarias. El paquete web apoya muchos de estos tipos de estrategias.  
 
-La popularidad de Node y [npm](https://www.npmjs.com/), es el adminitrador de paquete, que provee más contexto. Antes de que npm se hiciera más popular, era difícil consumir dependencias. Hubo un periodo donde las personas desarrollaron administradores de paquetes de específicos, pero al final npm ganó. Ahora el manejo de dependencias es mucho más fácil que antes, aunque aún hay desafíos por superar.
+La popularidad de Node y [npm](https://www.npmjs.com/), es el administrador de paquete, que provee más contexto. Antes de que npm se hiciera más popular, era difícil consumir dependencias. Hubo un periodo donde las personas desarrollaron administradores de paquetes de específicos, pero al final npm ganó. Ahora el manejo de dependencias es mucho más fácil que antes, aunque aún hay desafíos por superar.
 
 ## Corredores de Tareas y Conjuntos de Paquetes
 
@@ -18,11 +18,11 @@ Por un tiempo, [RequireJS](http://requirejs.org/) fue popular. La idea era prove
 
 ## Make
 
-[Make](https://en.wikipedia.org/wiki/Make_%28software%29) goes way back, as it was initially released in 1977. Even though it's an old tool, it has remained relevant. Make allows you to write separate tasks for various purposes. For instance, you could have different tasks for creating a production build, minifying your JavaScript or running tests. You can find the same idea in many other tools.
+[Make](https://en.wikipedia.org/wiki/Make_%28software%29)  va mucho más atrás, dado que fue lanzado en 1977. Aunque es una herramienta vieja, se ha mantenido relevante. Make permite escribir tareas separadas para diferentes propósitos. Por ejemplo, se puede tener diferentes tareas para la creación de una producción de construcción, minificando el JavaScript o proceso de pruebas. Se puede encontrar la misma idea en muchas otras herramientas.
 
-Even though Make is mostly used with C projects, it's not tied to C in any way. James Coglan discusses in detail [how to use Make with JavaScript](https://blog.jcoglan.com/2014/02/05/building-javascript-projects-with-make/). Consider the abbreviated code based on James' post below:
+Aún cuando Makees mayormente usado con proyectos en C, no se encuentra atado a C de ninguna forma. James Coglan discute en detalle [how to use Make with JavaScript](https://blog.jcoglan.com/2014/02/05/building-javascript-projects-with-make/). Considera el código abreviado basado en la publicación de James de abajo:
 
-**Makefile**
+**Archivo Make**
 
 ```makefile
 PATH  := node_modules/.bin:$(PATH)
@@ -53,7 +53,7 @@ clean:
     rm -rf build
 ```
 
-With Make, you model your tasks using Make-specific syntax and terminal commands making it possible to integrate with webpack.
+ Con Make, se modela las tareas usando la sintaxis específica Make- y los terminales de comando haciendo posible integrarlo con paquete web.
 
 ## RequireJS
 
