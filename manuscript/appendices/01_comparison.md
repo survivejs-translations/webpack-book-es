@@ -4,17 +4,17 @@ Anteriormente, era suficiente concatenar los scripts juntos. Sin embargo, los ti
 
 Por esta razón, existen múltiples estrategias sobre cómo cargarlas. Se podrían cargar todas a la vez o considerar cargarlas a medida que vayan siendo necesarias. El paquete web apoya muchos de estos tipos de estrategias.  
 
-La popularidad de Node y  [npm](https://www.npmjs.com/), es el adminitrador de paquete, que provee más contexto. Antes de que npm se hiciera más popular, era difícil consumir dependencias. Hubo un periodo donde las personas desarrollaron administradores de paquetes de específicos, pero al final npm ganó. Ahora el manejo de dependencias es mucho más fácil que antes, aunque aún hay desafíos por superar.
+La popularidad de Node y [npm](https://www.npmjs.com/), es el adminitrador de paquete, que provee más contexto. Antes de que npm se hiciera más popular, era difícil consumir dependencias. Hubo un periodo donde las personas desarrollaron administradores de paquetes de específicos, pero al final npm ganó. Ahora el manejo de dependencias es mucho más fácil que antes, aunque aún hay desafíos por superar.
 
-## Task Runners and Bundlers
+## Corredores de Tareas y Conjuntos de Paquetes
 
-Historically speaking, there have been many build tools. *Make* is perhaps the best known, and it's still a viable option. Specialized *task runners*, such as Grunt and Gulp were created particularly with JavaScript developers in mind. Plugins available through npm made both task runners powerful and extendable. It's possible to use even npm `scripts` as a task runner. That's common, particularly with webpack.
+Historicamente hablando, han existido muchas herramientas. El más conocido es tal vez *Make*, y es todavía una opción viable. *Corredores de Tareas* especializados, tales como Grunt y Gunt fueron creados particurlarmente con desarrolladores JavaScript en mente. Los complementos disponibles a través de npm hace que ambos corredores de tareas sean poderosos y extensibles. Es incluso posible usar npm `scripts` como un corredor de tareas. Eso es común, particularmente con paquete web.
 
-Task runners are great tools on a high level. They allow you to perform operations in a cross-platform manner. The problems begin when you need to splice various assets together and produce bundles. *bundlers*, such as Browserify, Brunch, or webpack, exist for this reason.
+Los corredores de tareas son grandes herramientas en un alto nivel. Te permiten realizar operaciones en una plataforma cruzada. El problema inicia cuando se necesita unir varios puntos fuertes y producir conjuntos de paquetes. *Empaquetadores*, como Browserify, Brunch o paquete web, existen por esta razón.
 
-{pagebreak}
+{salto de página}
 
-For a while, [RequireJS](http://requirejs.org/) was popular. The idea was to provide an asynchronous module definition and build on top of that. The format, AMD, is covered in greater detail later in this chapter. Fortunately, the standards have caught up, and RequireJS seems more like a curiosity now.
+Por un tiempo, [RequireJS](http://requirejs.org/) fue popular. La idea era proveer una definición de módulo asincrónico y construir sobre eso. El formato, AMD, se encuentra cubierto con mayor detalle luego en este capítulo. Afortunadamente, los estándares se han alcanzado, y RequireJS parece ahora más una curiosidad.
 
 ## Make
 
