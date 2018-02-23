@@ -1,4 +1,4 @@
-# Comparación de Herramientras de Construcción
+# Comparación de Herramientas de Construcción
 
 Anteriormente, era suficiente concatenar los scripts. Sin embargo, los tiempos han cambiado, y ahora distribuir el código JavaScript puede ser un esfuerzo complicado. Este problema se ha intensificado con el aumento de las aplicaciones de página única (AsPU). Ellas suelen confiar en muchas librerias más robustas. 
 
