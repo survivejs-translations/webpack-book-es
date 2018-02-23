@@ -2,9 +2,9 @@
 
 Anteriormente, era suficiente concatenar los scripts juntos. Sin embargo, los tiempos han cambiado, y ahora distribuir el código JavaScript puede ser un esfuerzo complicado. Este problema se ha intensificado con el aumento de las aplicaciones de página única (AsPU). Ellas suelen confiar en muchas librerias más robustas. 
 
-For this reason, there are multiple strategies on how to load them. You could load them all at once or consider loading libraries as you need them. Webpack supports many of these sorts of strategies.
+Por esta razón, existen múltiples estrategias sobre cómo cargarlas. Se podrían cargar todas a la vez o considerar cargarlas a medida que vayan siendo necesarias. El paquete web apoya muchos de estos tipos de estrategias.  
 
-The popularity of Node and [npm](https://www.npmjs.com/), its package manager, provide more context. Before npm became popular, it was hard to consume dependencies. There was a period when people developed frontend specific package managers, but npm won in the end. Now dependency management is easier than before, although there are still challenges to overcome.
+La popularidad de Node y  [npm](https://www.npmjs.com/), es el adminitrador de paquete, que provee más contexto. Antes de que npm se hiciera más popular, era difícil consumir dependencias. Hubo un periodo donde las personas desarrollaron administradores de paquetes de específicos, pero al final npm ganó. Ahora el manejo de dependencias es mucho más fácil que antes, aunque aún hay desafíos por superar.
 
 ## Task Runners and Bundlers
 
