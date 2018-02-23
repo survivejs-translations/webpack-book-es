@@ -111,7 +111,7 @@ En lugar de `rm -rf`, probablemente se quiera usar utilidades tales como [rimraf
 
 ![Grunt](images/grunt.png)
 
-[Grunt](http://gruntjs.com/) Fue el primer corredor de tareas popular para desarrolladores de interfaz. Su arquitectura de complementos (plugin) contribuyó a su popularidad. Los complementos son comúnmente complejos por ellos mismos.Como resultado, cuando crece la configuración, resulta más difícil comprender qué está sucediendo.
+[Grunt](http://gruntjs.com/) Fue el primer corredor de tareas popular para desarrolladores de interfaz. Su arquitectura de complementos (plugin) contribuyó a su popularidad. Los complementos son comúnmente complejos por ellos mismos. Como resultado, cuando crece la configuración, resulta más difícil comprender qué está sucediendo.
 
 Aquí un ejemplo de [Grunt documentation](http://gruntjs.com/sample-gruntfile). En esta configuración, se define un detector y un observador de tareas. Cuando el *observador* de tareas se ejecuta, se desencadena el *detector* de tareas también. De esta forma, mientras se ejecuta Grunt, se reciben advertencias en tiempo real en el terminal mientras se edita el código fuente.
 
@@ -204,27 +204,27 @@ T> [webpack-stream](https://www.npmjs.com/package/webpack-stream) permite usar e
 
 ![Browserify](images/browserify.png)
 
-Dealing with JavaScript modules has always been a bit of a problem. The language itself didn't have the concept of modules till ES2015. Ergo, the language was stuck in the '90s when it comes to browser environments. Various solutions, including [AMD](http://requirejs.org/docs/whyamd.html), have been proposed.
+Lidiando con los modulos de JavaScript siempre ha sido un poco problemático. El lenguaje mismo no poseía el concepto de módulos hasta ES2015. Por lo tanto, el lenguaje estaba atascado en los '90 en lo que se refiere a ambientes de navegación. Diversas soluciones, incluyendo [AMD](http://requirejs.org/docs/whyamd.html), han sido propuestas. 
 
-[Browserify](http://browserify.org/) is one solution to the module problem. It allows CommonJS modules to be bundled together. You can hook it up with Gulp, and you can find smaller transformation tools that allow you to move beyond the basic usage. For example, [watchify](https://www.npmjs.com/package/watchify) provides a file watcher that creates bundles for you during development saving effort.
+[Browserify](http://browserify.org/) es una solución el problema de módulos. Le permite a los módulos CommonJS ser empaquetados juntos. Se pueden conectar con Gulp, y se pueden encontrar herramientas de transformación más pequeñas que permitan ir más allá del uso básico. Por ejemplo, [watchify](https://www.npmjs.com/package/watchify) provee un archivo observador que crea conjuntos de paquetes para su desarrollo durante el esfuerzo de guardado.
 
-The Browserify ecosystem is composed of a lot of small modules. In this way, Browserify adheres to the Unix philosophy. Browserify is easier to adopt than webpack, and is, in fact, a good alternative to it.
+El ecosistema de Browserify se encuentra compuesto por muchos módulos pequeños. De esta forma, Browserify se adhiere a la filosofía de Unix. Browserify es más fácil de adoptar que el paquete web, y es, de hecho, una buena alternativa para ello. 
 
-T> [Splittable](https://www.npmjs.com/package/splittable) is a Browserify wrapper that allows code splitting, supports ES2015 out of the box, tree shaking, and more.
+T> [Splittable](https://www.npmjs.com/package/splittable) es una envoltura de Browserify que permite la división de código, apoya ES2015 fuera de lo establecido, hace vibrar, y más.
 
-T> [transform-loader](https://www.npmjs.com/package/transform-loader) allows you to use Browserify transforms with webpack.
+T> [transform-loader](https://www.npmjs.com/package/transform-loader) permite usar las transformaciones de Browserify con el paquete web.
 
 ## JSPM
 
 ![JSPM](images/jspm.png)
 
-Using [JSPM](http://jspm.io/) is quite different than previous tools. It comes with a command line tool of its own that is used to install new packages to the project, create a production bundle, and so on. It supports [SystemJS plugins](https://github.com/systemjs/systemjs#plugins) that allow you to load various formats to your project.
+Usando [JSPM](http://jspm.io/) es bastante diferente a herramientas previas. Viene con una herramienta de comando lineal de sí misma que es usada para instalar nuevos paquetes para el proyecto, crear un empaquetamiento de producción, y así sucesivamente. Esto apoya al [SystemJS plugins](https://github.com/systemjs/systemjs#plugins) que permite cargar varios formatos al proyecto. 
 
 ## Brunch
 
 ![Brunch](images/brunch.png)
 
-Compared to Gulp, [Brunch](http://brunch.io/) operates on a higher level of abstraction. It uses a declarative approach similar to webpack's. To give you an example, consider the following configuration adapted from the Brunch site:
+Comparado con Gulp, [Brunch](http://brunch.io/) opera en un nivel más alto de abstracción. Utiliza un enfoque declarativo similar al del paquete web. Para proporcionar un ejemplo, considera la siguiente configuración adaptada desde el sitio Brunch. 
 
 ```javascript
 module.exports = {
@@ -250,19 +250,19 @@ module.exports = {
 };
 ```
 
-Brunch comes with commands like `brunch new`, `brunch watch --server`, and `brunch build --production`. It contains a lot out of the box and can be extended using plugins.
+Brunch viene con comandos como `brunch new`, `brunch watch --server`, y `brunch build --production`. Contiene mucho de fuera de lo establecido y puede ser extendido usando complementos.
 
-T> There is an experimental [Hot Module Reloading runtime](https://www.npmjs.com/package/hmr-brunch) for Brunch.
+T> Hay un experimento [Hot Module Reloading runtime](https://www.npmjs.com/package/hmr-brunch) para Brunch.
 
-## Webpack
+## Paquete Web
 
 ![webpack](images/webpack.png)
 
-You could say [webpack](https://webpack.js.org/) takes a more monolithic approach than Browserify. Whereas Browserify consists of multiple small tools, webpack comes with a core that provides a lot of functionality out of the box.
+Se podría decir que [webpack](https://webpack.js.org/) toma un enfoque más monolítico que el de Browserify. Mientras que Browserify consiste en múltiples herramientas pequeñas, el paquete web viene con núcleo que le provee de bastante funcionalidad fuera de lo establecido.
 
-Webpack core can be extended using specific *loaders* and *plugins*. It gives control over how it *resolves* the modules, making it possible to adapt your build to match specific situations and workaround packages that don't work correctly out of the box.
+El núcleo de paquete Web puede ser extendido usando unas específicas *escaleras* y *complementos*. Le da el control sobre cómo *resuelve* los módulos, haciendo posible adaptar tu construcción para igualar situaciones especificas y soluciones alternativas que no funcionan correctamente fuera de lo establecido.
 
-Compared to the other tools, webpack comes with initial complexity, but it makes up for this through its broad feature set. It's an advanced tool that requires patience. But once you understand the basic ideas behind it, webpack becomes powerful.
+Comparado con las otras herramientas, el paquete web viene con una complejidad inicial, sin embargo lo enmenda a través de su amplio conjunto de características. Es una herramienta avanzada que requiere paciencia. Sin embargo, una vez que entiendes las ideas básicas detrás de ello, el paquete web se vuelve poderoso.
 
 ## Other Options
 
