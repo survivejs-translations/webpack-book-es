@@ -1,4 +1,4 @@
-# Comparison of Build Tools
+# Comparación de herramientras de Construcción
 
 Back in the day, it was enough to concatenate scripts together. Times have changed, though, and now distributing your JavaScript code can be a complicated endeavor. This problem has escalated with the rise of single page applications (SPAs). They tend to rely on many hefty libraries.
 
