@@ -264,25 +264,25 @@ El núcleo de paquete Web puede ser extendido usando unas específicas *escalera
 
 Comparado con las otras herramientas, el paquete web viene con una complejidad inicial, sin embargo lo enmenda a través de su amplio conjunto de características. Es una herramienta avanzada que requiere paciencia. Sin embargo, una vez que entiendes las ideas básicas detrás de ello, el paquete web se vuelve poderoso.
 
-## Other Options
+## Otras Opciones
 
-You can find more alternatives as listed below:
+Puedes encontrar más alternativas enlistadas abajo:
 
-* [pundle](https://www.npmjs.com/package/pundle) advertises itself as a next generation bundler and notes particularly its performance.
-* [Rollup](https://www.npmjs.com/package/rollup) focuses on bundling ES2015 code. *Tree shaking* is one of its selling points. You can use Rollup with webpack through [rollup-loader](https://www.npmjs.com/package/rollup-loader).
-* [AssetGraph](https://www.npmjs.com/package/assetgraph) takes an entirely different approach and builds on top of HTML semantics making it ideal for [hyperlink analysis](https://www.npmjs.com/package/hyperlink) or [structural analysis](https://www.npmjs.com/package/assetviz). [webpack-assetgraph-plugin](https://www.npmjs.com/package/webpack-assetgraph-plugin) bridges webpack and AssetGraph together.
-* [FuseBox](https://www.npmjs.com/package/fuse-box) is a bundler focusing on speed. It uses a zero-configuration approach and aims to be usable out of the box.
-* [StealJS](https://stealjs.com/) is a dependency loader and a build tool which has focused on performance and ease of use.
-* [Flipbox](https://www.npmjs.com/package/flipbox) wraps multiple bundlers behind a uniform interface.
-* [Blendid](https://www.npmjs.com/package/blendid) is a blend of Gulp and bundlers to form an asset pipeline.
+* [pundle](https://www.npmjs.com/package/pundle) se anuncia a si mismo como la próxima generación de empaquetamiento y denota particularmente su rendimiento.
+* [Rollup](https://www.npmjs.com/package/rollup) se concentra en empaquetar el código ES2015. *hacer vibrar* es uno de sus puntos de venta. Puede usar Rollup con paquete web a través de [rollup-loader](https://www.npmjs.com/package/rollup-loader).
+* [AssetGraph](https://www.npmjs.com/package/assetgraph) toma un enfoque totalmente diferente y construye sobre la semántica de HTML haciéndola ideal para [hyperlink analysis](https://www.npmjs.com/package/hyperlink) o [structural analysis](https://www.npmjs.com/package/assetviz). [webpack-assetgraph-plugin](https://www.npmjs.com/package/webpack-assetgraph-plugin) puntes de paquete web y AssetGraph juntos.
+* [FuseBox](https://www.npmjs.com/package/fuse-box) ees un empaquetamiento que se concentra en la velocidad. Usa un enfoque de configuración cero y apunta a ser utilizable fuera de la establecido.
+* [StealJS](https://stealjs.com/) es un cargador de dependencias y una herramienta de construcción que se ha concentrado en el rendimiento y en un fácil uso.
+* [Flipbox](https://www.npmjs.com/package/flipbox) envuelve múltiples empaquetamientos destrás de una interfaz uniforme.
+* [Blendid](https://www.npmjs.com/package/blendid)  es una mezcla de Gulp y empaquetamientos para formar unas tuberías de puntos fuertes.
 
-## Conclusion
+## Conclusión
 
-Historically there have been a lot of build tools for JavaScript. Each has tried to solve a specific problem in its own way. The standards have begun to catch up and less effort is required around basic semantics. Instead, tools can compete on a higher level and push towards better user experience. Often you can use a couple of separate solutions together.
+Historicamente ha habido muchas herramientas de construcción para JavaScript. Cada una ha intentado solucionar un problema en específico a su modo. Los estandares han comenzado a alcanzarse y menor es el esfuerzo requerido alrededor de la semántica básica. En su lugar, las herramientas pueden competir en un nivel mayor y presionar hacia una mejor experiencia para el usuario. Usualmente se puede usar un par de soluciones separadas de forma conjunta. 
 
-To recap:
+Para recapitular:
 
-* **Task runners** and **bundlers** solve different problems. You can achieve similar results with both but often it's best to use them together to complement each other.
-* Older tools, such as Make or RequireJS, still have influence even if they aren't as popular in web development as they once were.
-* Bundlers like Browserify or webpack solve an important problem and help you to manage complex web applications.
-* A number of emerging technologies approach the problem from different angles. Sometimes they build on top of other tools and at times they can be used together.
+* **Corredores de Tareas* y **empaquetadores**  resuelven diferentes problemas. Puede aspirar a resultados similares con ambos, pero usualmente es mejor usarlos juntos para complementarlos.
+* Herramientas más viejas, tales como Make o RequireJS, aún tienen influcencia, inlcuso si no son tan populares en desarrollo web como lo fueron en el pasado. 
+* Empaquetadores como Browserify o paquete web solucionan un importamte problema y a manejar aplicaciones web complejas.
+* Un número de emergentes tecnología  se enfocan en el problema desde diferentes ángulos. Algunas veces se contruyen sobre otras herramientas y a veces pueden ser usadas juntas.
