@@ -111,11 +111,11 @@ En lugar de `rm -rf`, probablemente se quiera usar utilidades tales como [rimraf
 
 ![Grunt](images/grunt.png)
 
-[Grunt](http://gruntjs.com/) was the first popular task runner for frontend developers. Its plugin architecture contributed towards its popularity. Plugins are often complex by themselves. As a result, when configuration grows, it can become difficult to understand what's going on.
+[Grunt](http://gruntjs.com/) Fue el primer corredor de tareas popular para desarrolladores de interfaz. Su arquitectura de complementos (plugin) contribuyó a su popularidad. Los complementos son comúnmente complejos por ellos mismos.Como resultado, cuando crece la configuración, resulta más difícil comprender qué está sucediendo.
 
-Here's an example from [Grunt documentation](http://gruntjs.com/sample-gruntfile). In this configuration, you define a linting and a watcher tasks. When the *watch* task gets run, it triggers the *lint* task as well. This way, as you run Grunt, you get warnings in real-time in the terminal as you edit the source code.
+Aquí un ejemplo de [Grunt documentation](http://gruntjs.com/sample-gruntfile). En esta configuración, se define un detector y un observador de tareas. Cuando el *observador* de tareas se ejecuta, se desencadena el *detector* de tareas también. De esta forma, mientras se ejecuta Grunt, se reciben advertencias en tiempo real en el terminal mientras se edita el código fuente.
 
-{pagebreak}
+{salto de página}
 
 **Gruntfile.js**
 
@@ -143,11 +143,11 @@ module.exports = grunt => {
 };
 ```
 
-In practice, you would have many small tasks for specific purposes, such as building the project. An important part of the power of Grunt is that it hides a lot of the wiring from you.
+En práctica, se tendrán varias pequeñas tareas para propósitos específicos, tales como la construcción de el proyecto. Una parte importante del poder de Grunt es que esconde mucho del cableado.
 
-Taken too far, this can get problematic. It can become hard to understand what's going on under the hood. That's the architectural lesson to take from Grunt.
+LLevado demasiado lejos, esto puede resultar problemático, puede resultar difícil de comprender lo que está sucediendo bajo el capót. Esa es la lección arquitectónica que se debe tomar de Grunt.
 
-T> [grunt-webpack](https://www.npmjs.com/package/grunt-webpack) plugin allows you to use webpack in a Grunt environment while you leave the heavy lifting to webpack.
+T> complemento [grunt-webpack](https://www.npmjs.com/package/grunt-webpack) te permite usar el paquete web en un ambiente Grunt mientras se deja la carga pesada para el paquete web.
 
 ## Gulp
 
