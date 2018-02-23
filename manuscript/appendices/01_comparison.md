@@ -57,7 +57,7 @@ clean:
 
 ## RequireJS
 
-[RequireJS](http://requirejs.org/) was perhaps the first script loader that became genuinely popular. It gave the first proper look at what modular JavaScript on the web could be. Its greatest attraction was AMD. It introduced a `define` wrapper:
+[RequireJS](http://requirejs.org/) fue tal vez el primer cargador de script que se hizo genuinamente popular. Le dio el primer vistazo apropiado a lo que un JavaScript modular en la web podría ser. Su mayor atracción fue AMD. Introdujo una envoltura `define`:
 
 ```javascript
 define(["./MyModule.js"], function (MyModule) {
@@ -72,9 +72,9 @@ define(["./MyModule.js"], function (MyModule) {
 });
 ```
 
-{pagebreak}
+{salto de página}
 
-Incidentally, it's possible to use `require` within the wrapper:
+Incidentemente, es posible usar `require` dentro de la envoltura: 
 
 ```javascript
 define(["require"], function (require) {
@@ -84,13 +84,13 @@ define(["require"], function (require) {
 });
 ```
 
-This latter approach eliminates a part of the clutter. You still end up with code that feels redundant. ES2015 and other standards solve this.
+Este último enfoque elimina una parte del desorden. Todavía se mantiene un código que se siente redundante. ES2015 y otros estándares solucionan esto.
 
-T> Jamund Ferguson has written an excellent blog series on how to port from [RequireJS to webpack](https://gist.github.com/xjamundx/b1c800e9282e16a6a18e).
+T> Jamund Ferguson ha escrito un excelente blog sobre cómo portar desde [RequireJS to webpack](https://gist.github.com/xjamundx/b1c800e9282e16a6a18e).
 
-## npm `scripts` as a Task Runner
+## npm `scripts` como un Corredor de Tarea
 
-Even though npm CLI wasn't primarily designed to be used as a task runner, it works as such thanks to *package.json* `scripts` field. Consider the example below:
+Aunque npm CLI no fuese primordialmente diseñado para ser usado como un corredor de tarea, funciona como tal gracias al campo de `scripts` *package.json*. Considera el siguiente ejemplo:
 
 **package.json**
 
@@ -103,9 +103,9 @@ Even though npm CLI wasn't primarily designed to be used as a task runner, it wo
 },
 ```
 
-These scripts can be listed using `npm run` and then executed using `npm run <script>`. You can also namespace your scripts using a convention like `test:watch`. The problem with this approach is that it takes care to keep it cross-platform.
+Estos scripts pueden ser enlistados usando `npm run` y luego ejecutados usando `npm run <script>`. También se puede nombrar el espacio de los scripts usando una convención como `test:watch`. El problema con este enfoque es que se encarga de mantener la plataforma cruzada.
 
-Instead of `rm -rf`, you likely want to use utilities such as [rimraf](https://www.npmjs.com/package/rimraf) and so on. It's possible to invoke other tasks runners here to hide the fact that you are using one. This way you can refactor your tooling while keeping the interface as the same.
+En lugar de `rm -rf`, probablemente se quiera usar utilidades tales como [rimraf](https://www.npmjs.com/package/rimraf) y así sucesivamente. Es posible invocar otros corredores de tareas aquí para esconder el hecho de que se está usando uno. De esta forma se puede refactorizar las herramientas mientras se mantiene la interfaz como la misma.
 
 ## Grunt
 
