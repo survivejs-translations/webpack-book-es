@@ -1,51 +1,52 @@
-# Troubleshooting
+# Resolución de problemas Troubleshooting
 
-Using webpack can lead to a variety of runtime warnings or errors. Often a particular part of the build fails for a reason or another. A basic process can be used to figure out these problems:
+Usar webpack puede guiar a una variedad de advertensias o errores de tiempo de ejecucuión. Generalmente una parte particular de la construcción falla, por una razón u otra. Un proceso básico puede ser usado para descifrar estos problemas:
 
-1. Pass `--display-error-details` flag to webpack to get a more accurate error to study. Example: `npm run build -- --display-error-details`.
-2. Study the origin of the error carefully. Sometimes you can infer what's wrong by context. If webpack fails to parse a module, it's likely not passing it through a loader you expect for example.
-3. Try to understand where the error stems from. Does it come from your code, a dependency, or webpack?
-4. Remove code until the error goes away and add code back till it appears again. Simplify as much as possible to isolate the problem.
-5. If the code worked in another project, figure out what's different. It's possible the dependencies between the projects vary, or the setup differs somehow. At the worst case, a package you rely upon has gained a regression. Using a *lockfile* is a good idea for this reason.
-6. Study the related packages carefully. Sometimes looking into the package *package.json* can yield insight. It's possible the package you are using does not resolve the way you expect.
-7. Search for the error online. Perhaps someone else has run into it. [Stack Overflow](https://stackoverflow.com/questions/tagged/webpack) and [the official issue tracker](https://github.com/webpack/webpack/issues) are good starting points.
-8. Enable `stats: "verbose"` to get more information out of webpack. The [official documentation covers more flags](https://webpack.js.org/configuration/stats/).
-9. Add a temporary `console.log` near the error to get more insight into the problem. A heavier option is to [debug webpack through Chrome Dev Tools](https://medium.com/webpack/webpack-bits-learn-and-debug-webpack-with-chrome-dev-tools-da1c5b19554).
-10. [Ask a question at Stack Overflow](https://stackoverflow.com/questions/tagged/webpack) or [use the official Gitter channel](https://gitter.im/webpack/webpack).
-11. If everything fails and you are convinced you have found a bug, [report an issue at the official issue tracker](https://github.com/webpack/webpack/issues) or at other appropriate places if it's an issue in a dependency. Follow the issue template carefully, and provide a minimal runnable example as it helps to resolve the problem.
+1. Pasa el indicador `--display-error-details` a webpack para conseguir un error más exacto para estudiar. Ejemplo: `npm run build -- --display-error-details`.
+2. Estudia cuidadosamente el origen del error. A veces, puedes deducir qué está mal por contexto. Si webpack falla en analizar un módulo, es posible que no pase por el cargador que esperas por ejemplo.
+3. Trata de entender de donde proviene el error. Viene de tu código, una dependencia o de webpack?
+4. Remueve el código hasta que el error desaparezca y añade el código de vuelta hasta que aparezca otra vez. Simplifica lo más que puedas para aislar el problema.
+5. Si el código funcionó en otro proyecto, determina qué es diferente. Es posible que las dependencias entre los proyectos varíen, o la confuguración difiere de algún modo. En el peor caso, un paquete en el que confías ha ganado una regresión. Usar un *lockfile* es una buena idea para este motivo.
+6. Estudia cuidadosamente los paquetes relacionados. A veces, mirar dentro del paquete *package.json* puede generar una idea. Es posible que el paquete que estás usando no resuelva de la manera que esperas.
+7. Busca el error en linea. Tal vez alguien se ha topado con el. [Stack Overflow](https://stackoverflow.com/questions/tagged/webpack) y [the official issue tracker](https://github.com/webpack/webpack/issues) son buenos puntos para empezar.
+8. Habilita `stats: "verbose"` para tener más información de webpack. El [official documentation covers more flags](https://webpack.js.org/configuration/stats/).
+9. Añade un `console.log` temporal cerca del error para tener más conocimiento del problema. Una opción más pesada es [debug webpack through Chrome Dev Tools](https://medium.com/webpack/webpack-bits-learn-and-debug-webpack-with-chrome-dev-tools-da1c5b19554).
+10. [Ask a question at Stack Overflow](https://stackoverflow.com/questions/tagged/webpack) o [use the official Gitter channel](https://gitter.im/webpack/webpack).
+11. Si todo falla y estás convencido que hallaste un error, [report an issue at the official issue tracker](https://github.com/webpack/webpack/issues) o en otros lugares si es un problema en una dependencia. Sigue cuidadosamente el 
+formato del error, y proporciona un mínimo ejemplo ejecutable mientras ayuda a resolver el problema.
 
-Sometimes it's fastest to drop the error to a search engine and gain an answer that way. Other than that this is a good debugging order. If your setup worked in the past, you could also consider using commands like [git bisect](https://git-scm.com/docs/git-bisect) to figure out what has changed between the known working state and the current broken one.
+A veces, es más rápido dejar caer el error en un motor de búsqueda y tener una respuesta de esa manera. Además, esta es una buena orden de depuración. Si tu configuración funcionó en el pasado, puedes considerar usar comandos como [git bisect](https://git-scm.com/docs/git-bisect) para descifrar que ha cambiado entre el estado de trabajo conocido y el actual descompuesto.
 
-You'll learn about the most common errors next and how to deal with them.
+Aprenderás sobre los errores más comunes a continuación y como lidiar con ellos.
 
-## ERROR in Entry module not found
+## ERROR en el módulo de Entrada no encontrado
 
-You can end up with this error if you make an entry path point at a place that does not exist. The error message tells you what path webpack fails to find.
+Puedes terminar con este error si haces un punto de camino de entrada en un lugar que no existe. El mensaje de error te dice qué camino webpack falla en encontrarse.
 
-## ERROR ... Module not found
+## ERROR ... Módulo no encontrado
 
-You can get the error in two ways. Either by breaking a loader definition so that it points to a loader that does not exist, or by breaking an import path within your code so that it points to a module that doesn't exist. The message points out what to fix.
+Puedes obtener el error de dos maneras. O bien sea rompiendo una definición del cargador para que apunte a un cargador que no existe, o rompiendo un camino de importación by breaking an import path dentro de tu código para que apunte a un módulo que no existe. El mensaje apunta qué arreglar.
 
-## Module parse failed
+## Error en el análisis de Módulo
 
-Even though webpack could resolve to your modules fine, it can still fail to build them. This case can happen if you are using syntax that your loaders don't understand. You could be missing something in your processing pass.
+Aunque webpack puede resolver tus módulos bien, puede igual fallar para construirlos. Este caso puede pasar si estás usando sintaxis que tus cargadores no entienden. Puedes estar perdiendo algo en tu pase de procesamiento.
 
-## Loader Not Found
+## Cargador no encontrado
 
-There's another subtle loader related error. If a package matching to a loader name that does not implement the loader interface exists, webpack matches to that and gives a runtime error that says the package is not a loader.
+Hay otro error relacionado con el cargador sutil. Sin un paquete coincide con un nombre de cargador que no implemeta la interfaz del cargador, existe, webpack coincide con eso y da un error de tiempo de ejecución que dice que el paquete no es un cargador.
 
-This mistake can be made by writing `loader: "eslint"` instead of `loader: "eslint-loader"`. If the loader doesn't exist at all, the `Module not found` error will be raised.
+Este error puede producirse por escribir `loader: "eslint"` en lugar de `loader: "eslint-loader"`. Si el cargador no existe en lo absoluto, el error `Module not found` se generará.
 
-## Module build failed: Unknown word
+## Error en la compilación del módulo: Palabra desconocida
 
-This error fits the same category. Parsing the file succeeded, but there was the unknown syntax. Most likely the problem is a typo, but this error can also occur when Webpack has followed an import and encountered syntax it doesn't understand. Most likely this means that a loader is missing for that particular file type.
+Este error encaja en la misma catergoría. El aálisis del archivo tuvo exito, pero estaba la sintaxis desconocida. Lo más probable es que el problema sea un error de tipeo, pero este error puede ocurrir también cuando Webpack ha seguido una importación y ha encontrado una sintaxis que no entiende. Probablemente esto significa que un cargador falta para ese tipo de archivo en especial.
 
-## SyntaxError: Unexpected token
+## Error de sintaxis: Símbolo inesperado
 
-`SyntaxError` is another error for the same category. This error is possible if you use ES2015 syntax that hasn't been transpiled alongside UglifyJS. As it encounters a syntax construct it does not recognize, it raises an error.
+`SyntaxError` es otro error para la misma categoría. Este error es posible si usas la sintaxis ES2015 que no ha sido transpilada junto a UglifyJS. Cuando encuentra una construcción de sintaxis que no reconoce, se generará un error.
 
-## Conclusion
+## Conclusión
 
-These are only examples of errors. Certain errors happen on the webpack side, but the rest come from the packages it uses through loaders and plugins. Simplifying your project is a good step as that makes it easier to understand where the error happens.
+Estos son sólo ejemplos de errores. Ciertos errores ocurren en el lado de webpack, pero el resto viene de los paquetes que usa a través de cargadores y complementos. Simplificando, tu proyecto es un buen paso que hace que sea más fácil donde ocurre el error.
 
-In most cases, the errors are fast to solve if you know where to look, but in the worst case, you have come upon a bug to fix in the tooling. In that case, you should provide a high-quality report to the project and help to resolve it.
+En la mayoría de los casos, los errores son fáciles de resolver si sabes donde buscar, pero en el peor de los casos, te has topado con un error para arreglar la herramienta. En ese caso, deberías proporcionar un reporte de alta calidad para el proyecto y ayudar a resolverlo. 
