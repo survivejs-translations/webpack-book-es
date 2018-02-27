@@ -1,23 +1,23 @@
-# Hot Module Replacement
+# Reemplazo del Módulo Caliente
 
-**Hot Module Replacement** (HMR) builds on top of the WDS. It enables an interface that makes it possible to swap modules live. For example, *style-loader* can update your CSS without forcing a refresh. As CSS is stateless by design, implementing HMR for it's ideal.
+**Hot Module Replacement** (HMR) se basa en el WDS. Habilita una interfaz que hace posible el intercambio de  módulos en vivo. Por ejemplo, *style-loader* puede actualizar tu CSS sin forzar una actualización. Como CSS es apatrida por diseño, implementar HMR para eso es lo ideal.
 
-HMR is possible with JavaScript too, but due to application state, it's harder. Vue and [vue-hot-reload-api](https://www.npmjs.com/package/vue-hot-reload-api) is a good example.
+HMR es posible también con JavaScript, pero debido a la aplicación de estado, es más complicado. Vue y [vue-hot-reload-api](https://www.npmjs.com/package/vue-hot-reload-api) es un buen ejemplo.
 
-## Enabling HMR
+## Habilitando HMR
 
-To enable HMR, the following things have to happen:
+Para habilitar HMR, las siguientes cosas tienen que pasar:
 
-1. WDS has to run in hot mode to expose the hot module replacement interface to the client.
-2. Webpack has to provide hot updates to the server. This is achieved using `webpack.HotModuleReplacementPlugin`.
-3. The client has to run specific scripts provided by the WDS. They are injected automatically but can be enabled explicitly through entry configuration.
-4. The client has to implement the HMR interface through `module.hot.accept`.
+1. WDS tiene que ejecutarse en modo caliente para exponer la interfaz del reemplazo del módulo caliente al cliente.
+2. Webpack tiene que proporcionar actualizaciones calientes para el servidor. Esto se logra usando `webpack.HotModuleReplacementPlugin`.
+3. El cliente tiene que ejecutar secuencias de comando específicas proporcionadas por el WDS. Son inyectadas automáticamente pero pueden ser habilitadas explícitamente a través de la configuración de entrada.
+4. El cliente debe implementar la interface HMR a través de  `module.hot.accept`.
 
-Using `webpack-dev-server --hot` solves the first two problems. In this case you have to handle only the last one yourself if you want to patch JavaScript application code. Skipping the `--hot` flag and going through webpack configuration gives more flexibility.
+Usar `webpack-dev-server --hot` resuelve los primeros dos problemas. En este caso tienes que controlar sólo el último tu mismo, si quieres reparar el código de aplicación de JavaScript. Omitir el indicador `--hot` e ir a través de la configuración de webpack da más flexibilidad.
 
 {pagebreak}
 
-The following listing contains the most important parts related to this approach. You will have to adapt from here to match your configuration style:
+La siguiente lista continiene las partes más importantes relacionadas a este enfoque. Tendrás que adaptarte desde aquí para que coincida con tu estilo de configuración:
 
 ```javascript
 {
@@ -37,27 +37,27 @@ The following listing contains the most important parts related to this approach
 }
 ```
 
-If you implement configuration like above without implementing the client interface, you will most likely end up with an error:
+Si implementas la configuración como arriba sin implementar la interfaz del cliente, probablemente termines con un error:
 
 ![No refresh](images/no-refresh2.png)
 
-The message tells that even though the HMR interface notified the client portion of the code of a hot update, nothing was done about it. This is something to fix next.
+El mensaje dice que aunque la interfaz de HMR notificó la parte del cliente del código de una actualización caliente, no se hizo nada al respecto. Esto es algo para solucionar después.
 
-T> The setup assumes you have enabled `NamedModulesPlugin`. See the *Adding Hashes to Filenames* chapter for further details.
+T> La configuración asume que has habilitado `NamedModulesPlugin`. Lee el capítulo *Adding Hashes to Filenames* para más detalles.
 
-W> *webpack-dev-server* can be picky about paths. Webpack [issue #675](https://github.com/webpack/webpack/issues/675) discusses the problem in more detail.
+W> *webpack-dev-server* puede ser exigente sobre los caminos. Webpack [issue #675](https://github.com/webpack/webpack/issues/675) discute el problema con más detalle.
 
-W> You should **not** enable HMR for your production configuration. It likely works, but it makes your bundles bigger than they should be.
+W> Deberías **not** habilitar HMR para tu configuración de producción. Es probable que funcione, pero hace a tus paquetes más grandes de lo que deberían ser.
 
-W> If you are using Babel, configure it so that it lets webpack control module generation as otherwise HMR logic won't work!
+W> Si usas Babel, configuralo para que webpack controle el módulo de generación, ya que, de lo contrario, la lógica de HMR no funcionará!
 
-## Implementing the HMR Interface
+## Implementar la interfaz de HMR
 
-Webpack exposes the HMR interface through a global variable: `module.hot`. It provides updates through `module.hot.accept(<path to watch>, <handler>)` function and you need to patch the application there.
+Webpack empone la interfaz de HMR a través de una variable global: `module.hot`. Proporciona actualizaciones a través de la función `module.hot.accept(<path to watch>, <handler>)` y necesitas reparar la aplicación ahí.
 
 {pagebreak}
 
-The following implementation illustrates the idea against the tutorial application:
+La siguiente implementación ilustra la idea contra el tutorial de aplicación:
 
 **app/index.js**
 
@@ -82,26 +82,25 @@ if (module.hot) {
 }
 ```
 
-If you refresh the browser, try to modify *app/component.js* after this change, and alter the text to something else, you should notice that the browser does not refresh at all. Instead, it should replace the DOM node while retaining the rest of the application as is.
+Si actualizas el buscador, trata de modificar *app/component.js* después de este cambio, y altera el texto a algo más, deberíar notar que el buscador no se actualiza del todo. En cambio, debería reemplazar el nodo DOM mientras conserva el resto de la aplicación como está.
 
 {pagebreak}
 
-The image below shows possible output:
+La imagen de abajo muestra los posibles resultados:
 
 ![Patched a module successfully through HMR](images/hmr.png)
 
-The idea is the same with styling, React, Redux, and other technologies. Sometimes you don't have to implement the interface yourself even as available tooling takes care of that for you.
+La idea es la misma con el estilo, React, Redux, y otras tecnologías. A veces, no tienes que implementar la interfaz tu mismo, aunque las herramientas disponibles se encarguen de eso por ti.
 
-T> To prove that HMR retains application state, set up [a checkbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox) based component next to the original. The `module.hot.accept` code has to evolve to capture changes to it as well.
+T> Para comprobar que HMR conserva el estado de aplicación, configura un componenta basado en [a checkbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox) al lado del original. El código `module.hot.accept` tiene que evolucionar para captar los cambios hechos en el también.
 
-T> The `if(module.hot)` block is eliminated entirely from the production build as minifier picks it up. The *Minifying* chapter delves deeper into this topic.
+T> El bloque `if(module.hot)` es completamente eliminado de la construcción de producción cuando el minifier lo recoge. El capítulo *Minifying* profundiza en este tema.
 
 {pagebreak}
 
-## Setting WDS Entry Points Manually
+## Establecer manalmente los puntos de entrada de WDS
 
-In the setup above, the WDS-related entries were injected automatically. Assuming you are using WDS through Node, you would have to set them yourself as the Node API doesn't support injecting. The example below illustrates how to achieve this:
-
+En la configuración anterior, las entradas relacionadas con WDS fueron inyectadas automáticamente. Asumiendo que estás usando WDS a través del nodo, tendrías que configurarlos tu mismo ya que el nodo de API no soporta la inyección. El siguiente ejemplo muestra como lograrlo:
 ```javascript
 entry: {
   hmr: [
@@ -118,6 +117,6 @@ entry: {
 },
 ```
 
-## Conclusion
+## Conclusión
 
-HMR is one of those aspects of webpack that makes it attractive for developers and webpack has taken its implementation far. To work, HMR requires both client and server side support. For this purpose, webpack-dev-server provides both. Often you have to implement the client side interface although loaders like *style-loader* implement it for you.
+HMR es uno de esos aspectos de webpack que lo hace atractivo para desarrolladores y webpack ha llevado lejos su implementación. Para trabajar, HMR requiere el soporte tanto del cliente como del servidor. Para este propósito, webpack-dev-server proporciona ambos. Generalmente, tienes que implementar la interfaz del lado del cliente, aunque cargadores como *style-loader* lo implementen por ti.
