@@ -1,17 +1,17 @@
-# Glossary
+# Glosario
 
-Given webpack comes with specific nomenclature, the main terms and their explanations have been gathered below based on the book part where they are discussed.
+Dado que webpack viene con una nomenclatura específica, los términos principales y sus explicaciones han sido agrupados abajo basados en la parte del libro donde son discutidos.
 
-## Introduction
+## Introducción
 
-* **Static analysis** - When a tool performs static analysis, it examines the code without running it. This is how tools like ESLint or webpack operate. Statically analyzable standards, like ES2015 module definition, enable features like **tree shaking**.
-* **Resolving** is the process that happens when webpack encounters a module or a loader. When that happens, it tries to resolve it based on the given resolution rules.
+* **Static analysis** - Cuando una herramienta realiza un análisis estático, examina el código sin ejecutarlo. Así es cómo herramientas como ESLint o webpack operan. Los estándares estadísticamente analizables, como la definición del módulo ES2015, activan características como **tree shaking**.
+* **Resolving** es el procesoo que sucede cuando webpack encuentra un módulo o un cargador. Cuando esto sucede, intenta resolverlo basado en las reglas de resolución dadas.
 
-## Developing
+## Desarrollo
 
-* **Entry** refers to a file used by webpack as a starting point for bundling. An application can have multiple entries and depending on configuration, each entry can result in multiple bundles. Entries are defined in webpack's `entry` configuration. Entries are **modules** at the beginning of the dependency graph.
-* **Module** is a general term to describe a piece of the application. In webpack, it can refer to JavaScript, a style sheet, an image or something else. **Loaders** allows webpack to support different file types and therefore different types of module. If you point to the same module from multiple places of a code base, webpack will generate a single module in the output. This enables the singleton pattern on module level.
-* **Plugins** connect to webpack's event system and can inject functionality into it. They allow webpack to be extended and can be combined with loaders for maximum control. Whereas a loader works on a single file, a plugin has much broader access and is capable of more global control.
+* **Entry** se refiere a un archivo usado por webpack como un punto de partida para empaquetar. Una aplicación puede tener múltiples entradas dependiendo de la configuración, cada entrada puede resultar en múltiples paquetes. Las entradas son definidas en la configuración `entry` de webpack. Las entradas son **modules** al inicio del gráfico de dependencia.
+* **Module** es un término general para describir una parte de la aplicación. En webpack, se puede referir a JavaScript, una hoja de estilo, una imagen o algo más. Los **Loaders** le permiten a webpack soportar diferentes tipos de archivo y por lo tanto diferentes tipos de módulos. Si apuntas al mismo módulo desde diferentes partes de un código base, webpack generará un solo módulo en la salida. Esto activa el patrón singleton a nivel modular.
+* **Plugins** conecta al sistema de eventos de webpack y puede introducir funcionalidades en él. Ellos le permiten a webpack extenderse y combinarse con cargadores para un control máximo. Mientras que un cargador trabaja en un solo archivo, un plugin tiene un acceso más amplio y es capaz de un control más global.
 * **Hot Module Replacement (HMR)** refers to a technique where code running in the browser is patched on the fly without requiring a full page refresh. When an application contains complex state, restoring it can be difficult without HMR or a similar solution.
 * **Linting** relates to the process in which code is statically analyzed for a series of user-defined issues. These issues can range from discovering syntax errors to enforcing code-style. Whilst linting is by definition limited in its capabilities, a linter is invaluable for helping with early error discovery and enforcing code consistency.
 
