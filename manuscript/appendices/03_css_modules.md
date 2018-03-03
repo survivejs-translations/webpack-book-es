@@ -1,10 +1,10 @@
-# CSS Modules
+# Módulos de CSS
 
-Perhaps the biggest challenge of CSS is that all rules exist within **global scope**, meaning that two classes with the same name will collide. The limitation is inherent to the CSS specification but projects have workarounds for the issue. [CSS Modules](https://github.com/css-modules/css-modules) introduces **local scope** for every module by making every class declared within unique by including a hash in their name that is globally unique to the module.
+Quizás el mayor reto de CSS es que las todas reglas existen dentro de **global scope**, lo que significa que dos clases con el mismo nombre colicionarán. La limitación es innherente a la especificación de CSS, pero los proyectos tienen soluciones alternativas para ese problema. [CSS Modules](https://github.com/css-modules/css-modules) introduce **local scope** para cada módulo, haciendo que cada clase sea convocada individualmente, incluyendo un hash en sus nombres que sea único para todo el módulo.
 
-## CSS Modules Through *css-loader*
+## Módulos de CSS a través de *css-loader*
 
-Webpack's *css-loader* supports CSS Modules. You can enable it through a loader definition as above while enabling the support:
+El *css-loader* de Webpack soporta los Módulos de CSS. Puedes activarlos a través de una definición de carga como arriba mientras se activa el soporte:
 
 ```javascript
 {
@@ -17,11 +17,11 @@ Webpack's *css-loader* supports CSS Modules. You can enable it through a loader 
 },
 ```
 
-After this change, your class definitions remain local to the files. In case you want global class definitions, you need to wrap them within `:global(.redButton) { ... }` kind of declarations.
+Luego de este cambio, tu definición de clase permanecerá local para los archivos. En caso de que quieras definiciones de clase globales, necesitas envolverlas dentro del tipo de declaraciones `:global(.redButton) { ... }`.
 
 {pagebreak}
 
-In this case, the `import` statement gives you the local classes you can then bind to elements. Assume you had CSS as below:
+En este caso, la definición `import` te da las clases locales que puedes entonces atar a los elementos. Asumiento que tienes el CSS como abajo:
 
 **app/main.css**
 
@@ -35,7 +35,7 @@ body {
 }
 ```
 
-You could then bind the resulting class to a component:
+Podrías entonces atar la clase resultante a un componente:
 
 **app/component.js**
 
@@ -48,20 +48,20 @@ import styles from "./main.css";
 element.className = styles.redButton;
 ```
 
-`body` remains as a global declaration still. It's that `redButton` that makes the difference. You can build component-specific styles that don't leak elsewhere this way.
+`body` permanece como una declaración global aún. Es ese `redButton` que hace la diferencia. Puedes hacer estilos de componentes específicos que no se filtren a otro lugar de esta manera.
 
-CSS Modules provides additional features like composition to make it easier to work with your styles. You can also combine it with other loaders as long as you apply them before *css-loader*.
+Los Módulos de CSS proveen características adicionales como composición para hacer que trabajar con tus estilos sea más fácil. También puedes combinarlo con otros cargadores siempre y cuando les apliques antes *css-loader*.
 
-T> CSS Modules behavior can be modified [as discussed in the official documentation](https://www.npmjs.com/package/css-loader#local-scope). You have control over the names it generates for instance.
+T> El comportamiento de los Módulos de CSS puede ser modificado [as discussed in the official documentation](https://www.npmjs.com/package/css-loader#local-scope). Tienes control sobre los nombres que genera, por ejemplo.
 
-T> [eslint-plugin-css-modules](https://www.npmjs.com/package/eslint-plugin-css-modules) is handy for tracking CSS Modules related problems.
+T> [eslint-plugin-css-modules](https://www.npmjs.com/package/eslint-plugin-css-modules) es útil para monitorear los problemas relacionados con los Módulos de CSS.
 
-## Using CSS Modules with Third Party Libraries and CSS
+## Usar los Módulos de CSS con Bibliotecas de terceros y CSS
 
-If you are using CSS Modules in your project, you should process normal CSS through a separate loader definition without the `modules` option of *css-loader* enabled. Otherwise all classes will be scoped to their module. In the case of third party libraries this is almost certainly not what you want.
+Si estás usando Módulos de CSS en tu proyecto, deberías procesar el CSS normal a través de una definición de cargador separada sin la opción `modules` de *css-loader* activada. De otra froma, todas las clases serán puestas al alcande de sus ámbitos. En el caso de las bibliotecas de terceros, esto es casi seguro lo que tú no quieres.
 
-You can solve the problem by processing third party CSS differently through an `include` definition against *node_modules*. Alternately, you could use a file extension (`.mcss`) to tell files using CSS Modules apart from the rest and then manage this situation in a loader `test`.
+Puedes solucionar el problema procesando el CSS de terceros de manera diferente mediante una definición `include` en contra de *node_modules*. Alternativamente, podrías usar un extensión de archivo (`.mcss`) para apartar a los archivos que usan Módulos de CSS del resto y luego manejar esta situación en un cargador `test`.
 
-## Conclusion
+## Conclusión
 
-CSS Modules solve the scoping problem of CSS by defaulting to local scope per file. You can still have global styling but it requires additional effort. Webpack can be set up to support CSS Modules easily as seen above.
+Los Módulos de CSS solucionan el problema de ámbito de CSS, haciendo por defecto el ámbito por archivo. Aún puedes tener el diseño global, pero requiere esfuerzo adicional. Webpack puede ser instalado para soportar los Módulos de CSS fácilmente cómo vimos arriba.
