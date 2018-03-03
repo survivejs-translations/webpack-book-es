@@ -1,24 +1,24 @@
-# Searching with React
+# Buscar con React
 
-Let's say you want to implement a rough little search for an application without a proper backend. You could do it through [lunr](http://lunrjs.com/) and generate a static search index to serve.
+Digamos que quieres implementar una pequeña búsqueda aproximada para una aplicación sin una puerta trasera apropiada. Podrías hacerlo mediante [lunr](http://lunrjs.com/) y generar un índice de búsqueda estática para servir.
 
-The problem is that the index can be sizable depending on the amount of the content. The good thing is that you don't need the search index straight from the start. You can do something smarter instead. You can start loading the index when the user selects a search field.
+El problema es que el índice puede ser considerable dependiendo de la cantidad del contenido. Lo bueno es que no necesitas buscar el índice directo desde el incio. Puedes hacer algo más inteligente en su lugar. Puedes empezar cargando el índice cuando el usuario seleccione un campo de búsqueda.
 
-Doing this defers the loading and moves it to a place where it's more acceptable for performance. Given the initial search is slower than the subsequent ones, you should display a loading indicator. But that's fine from the user point of view. Webpack's *Code Splitting* feature allows to do this.
+Hacer esto aplaza la carga y la mueve a un lugar donde es más aceptable para el rendimiento. Dado que la búsqueda inicial es más lenta que las subsecuentes, deberías desplegar un indicador de carga. Pero eso está bien desde el punto de vista del usuario. La característica *Code Splitting* de Webpack permite hacer esto.
 
-## Implementing Search with Code Splitting
+## Implementar búsqueda con código de separación
 
-To implement code splitting, you need to decide where to put the split point, put it there, and then handle the `Promise`:
+Para implementar el código de separación, necesitas decidiar dónde el punto de quiebre, ponlo, y luego maneja el `Promise`:
 
 ```javascript
 import("./asset").then(asset => ...).catch(err => ...)
 ```
 
-The nice thing is that this gives error handling in case something goes wrong (network is down etc.) and gives a chance to recover. You can also use `Promise` based utilities like `Promise.all` for composing more complicated queries.
+Lo bueno es que esto da manejo de errores en caso de que algo vaya mal (la red está caída, etc.) y da una oportunidad para recuperar. Puedes usar también `Promise`, utilidades basadas como `Promise.all` para componer solicitudes más complicadas.
 
 {pagebreak}
 
-In this case, you need to detect when the user selects the search element, load the data unless it has been loaded already, and then execute search logic against it. Consider the React implementation below:
+En este caso, necesitas detectar cuando el usuario selecciona el elemento de búsqueda, carga la información inútil que ya había sido cargada, y luego ejecutar la búsqueda lógica contra ella. Considera la implementación de React de abajo:
 
 **App.js**
 
@@ -120,19 +120,19 @@ function loadIndex() {
 }
 ```
 
-In the example, webpack detects the `import` statically. It can generate a separate bundle based on this split point. Given it relies on static analysis, you cannot generalize `loadIndex` in this case and pass the search index path as a parameter.
+En el ejemplo, webpack detecta el `import` estáticamente. Puede generar un paquete separado basado en este punto de quiebre. Dado que depende de un análisis estático, no puedes generalizar a `loadIndex` en este caso y pasar la ruta del índice de búsqueda como un parámetro.
 
 {pagebreak}
 
-## Conclusion
+## Conclusión
 
-Beyond search, the approach can be used with routers too. As the user enters a route, you can load the dependencies the resulting view needs. Alternately, you can start loading dependencies as the user scrolls a page and gets adjacent parts with actual functionality. `import` provides a lot of power and allows you to keep your application lean.
+Más allá de la búsqueda, el acercamiento puede ser usado con los routers también. Como el usuario introduce una ruta, puedes cargar las dependencias que la vista resultante necesite. Alternativamente, puedes empezar a cargar dependencias cuando el usuario se mueva por una página y obtenga partes adyacentes con funcionalidad real. `import` provee un montón de poder y te permite mantener tu aplicación esbelta.
 
-You can find a [full example](https://github.com/survivejs-demos/lunr-demo) showing how it all goes together with lunr, React, and webpack. The basic idea is the same, but there's more setup in place.
+Puedes encontrar una [full example](https://github.com/survivejs-demos/lunr-demo) mostrando cómo van todas juntas con lunr, React, y webpack. La idea básica es la misma, pero hay ma´s configuración en su lugar.
 
-To recap:
+Para recapitular:
 
-* If your dataset is small and static, client-side search is a good option.
-* You can index your content using a solution like [lunr](http://lunrjs.com/) and then perform a search against it.
-* Webpack's *code splitting* feature is ideal for loading a search index on demand.
+* Si tu conjunto de datos es pequeño y estático, la búsqueda client-side es una buena opción.
+* Puedes indexar tu contenido usando una solución como [lunr](http://lunrjs.com/) y luego realizar una búsqueda contra ella.
+* La característica *code splitting* de Webpack es ideal para cargar un índice de búsqueda bajo demanda.
 * Code splitting can be combined with a UI solution like React to implement the whole user interface.
